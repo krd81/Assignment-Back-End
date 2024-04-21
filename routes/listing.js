@@ -6,6 +6,7 @@ import moment from "moment"
 
 // Initialize new router instance
 const router = Router()
+
 // PATHING FOR ROUTES: http://localhost:8003/listings
 
 // Get all listings
@@ -23,8 +24,10 @@ router.get('/', auth, async (req, res) => {
       listings = listings.map(listing => {
         const formattedListing = {
           ...listing.toObject(),
-          datePosted: listing.datePosted ? moment(listing.datePosted).format('DD/MM/YYYY') : '',
-          dateClosing: listing.dateClosing ? moment(listing.dateClosing).format('DD/MM/YYYY') : '',
+          // datePosted: listing.datePosted ? moment(listing.datePosted).format('DD/MM/YYYY') : '',
+          datePosted: listing.datePosted ? moment(listing.datePosted).format('YYYY-MM-DD') : '',
+          // dateClosing: listing.dateClosing ? moment(listing.dateClosing).format('DD/MM/YYYY') : '',
+          dateClosing: listing.dateClosing ? moment(listing.dateClosing).format('YYYY-MM-DD') : '',
         };
         return formattedListing;
       });
@@ -52,8 +55,10 @@ router.get('/user/:userId', auth, async (req, res) => {
     listings = listings.map(listing => {
       const formattedListing = {
         ...listing.toObject(),
-        datePosted: listing.datePosted ? moment(listing.datePosted).format('DD/MM/YYYY') : '',
-        dateClosing: listing.dateClosing ? moment(listing.dateClosing).format('DD/MM/YYYY') : '',
+        // datePosted: listing.datePosted ? moment(listing.datePosted).format('DD/MM/YYYY') : '',
+        datePosted: listing.datePosted ? moment(listing.datePosted).format('YYYY-MM-DD') : '',
+        // dateClosing: listing.dateClosing ? moment(listing.dateClosing).format('DD/MM/YYYY') : '',
+        dateClosing: listing.dateClosing ? moment(listing.dateClosing).format('YYYY-MM-DD') : '',
       };
       return formattedListing;
     });
@@ -81,8 +86,10 @@ router.get('/:id', auth, async (req, res) => {
       // Convert Mongoose document to a plain JavaScript object and format dates
       const formattedListing = {
         ...listing.toObject(),
-        datePosted: listing.datePosted ? moment(listing.datePosted).format('DD/MM/YYYY') : '',
-        dateClosing: listing.dateClosing ? moment(listing.dateClosing).format('DD/MM/YYYY') : '',
+        // datePosted: listing.datePosted ? moment(listing.datePosted).format('DD/MM/YYYY') : '',
+        datePosted: listing.datePosted ? moment(listing.datePosted).format('YYYY-MM-DD') : '',
+        // dateClosing: listing.dateClosing ? moment(listing.dateClosing).format('DD/MM/YYYY') : '',
+        dateClosing: listing.dateClosing ? moment(listing.dateClosing).format('YYYY-MM-DD') : '',
       };
 
       // If listing exists, send the formatted listing
