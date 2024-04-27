@@ -27,5 +27,10 @@ app.use('/login', loginRoutes)
 // Default route i.e. login page - is this necessary?
 app.get('/', (req, res) => res.send({info: "Talent Forge API"}))
 
+app.use((req, res, next) => {
+    console.log('Incoming Request:', req.method, req.path, req.headers.origin);
+    next();
+  });
+
 
 export default app
