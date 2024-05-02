@@ -40,6 +40,24 @@ const usersSchema = new mongoose.Schema({
             type: mongoose.ObjectId,
             ref: 'Listing'
         } // Only visible to user / admin
+    ],
+    listingsFavourites: [
+        {
+            type: mongoose.ObjectId,
+            ref: 'Listing'
+        }
+    ],
+    eventsBooked: [
+        {
+            type: mongoose.ObjectId,
+            ref: 'Event'
+        }
+    ],
+    eventsSaved: [
+        {
+            type: mongoose.ObjectId,
+            ref: 'Event'
+        }
     ]
 })
 
@@ -71,6 +89,28 @@ const listingsSchema = new mongoose.Schema({
 // Assign ListingModel to listingsSchema
 const ListingModel = mongoose.model('Listing', listingsSchema)
 
+// Define listingsSchema using Mongoose
+const eventsSchema = new mongoose.Schema({
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    location: { type: String, required: true },
+    date: { type: Date, required: true },
+    time: { type: String, required: true },
+    capacity: { type: Number, required: true },
+    eventActive: { type: Boolean, required: true, default: false},
+    attendees: [
+        {
+            type: mongoose.ObjectId,
+            ref: 'User'
+        }
+    ]
+
+})
+
+// Assign EventModel to eventSchema
+const EventModel = mongoose.model('Event', eventsSchema)
+
+
 
 // Export functions and variables
-export { closeConnection, UserModel, ListingModel }
+export { closeConnection, UserModel, ListingModel, EventModel }
