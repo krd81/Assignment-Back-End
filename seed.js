@@ -12,7 +12,7 @@ const users = [
         "role": "Recruitment Manager",
         "department": "Human Resources",
         "admin": true,
-        "aboutMe": {text: "I am a manager of the recruitment team", careerDevelopment: "I am keen to experience all areas of Human Rescources", tags: ["Happy where I am!","Might be willing to move!"]},
+        "aboutMe": {text: "I am a manager of the recruitment team", careerDevelopment: "I am keen to experience all areas of Human Resources", skills: ["Project Management","Strategy","Leadership"]},
         "imageRef": "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&h=350",
     },
     {
@@ -23,7 +23,7 @@ const users = [
         "role": "Human Resources Specialist",
         "department": "Human Resources",
         "admin": false,
-        "aboutMe": {text: "I am a Human Resources Specialist, looking after onboarding and training", careerDevelopment: "I aspire to be Learning and Development manager", tags: ["Looking for a new job!"]},
+        "aboutMe": {text: "I am a Human Resources Specialist, looking after onboarding and training", careerDevelopment: "I aspire to be Learning and Development manager", skills: ["Leadership", "Training"]},
         "imageRef": "https://images.pexels.com/photos/1520760/pexels-photo-1520760.jpeg?auto=compress&cs=tinysrgb&h=350"
 
     },
@@ -35,7 +35,7 @@ const users = [
         "role": "Software Engineer",
         "department": "IT",
         "admin": false,
-        "aboutMe": {text: "I am a Software Engineer, having been recently promoted from Junior Software Engineer", careerDevelopment: "My long term plan is to be Head of IT", tags: ["Happy where I am!","Might be willing to move!"]},
+        "aboutMe": {text: "I am a Software Engineer, having been recently promoted from Junior Software Engineer", careerDevelopment: "My long term plan is to be Head of IT", skills: ["Project Management","Strategy","Analytical"]},
         "imageRef": "https://images.pexels.com/photos/3727513/pexels-photo-3727513.jpeg?auto=compress&cs=tinysrgb&h=350",
     },
     {
@@ -46,7 +46,7 @@ const users = [
         "role": "Product Manager",
         "department": "Production",
         "admin": false,
-        "aboutMe": {text: "I am a Product Manager and I manage a team of Product Developers", careerDevelopment: "Having gained extensive experience in the overseas market, I am keen to develop my skills within the local Production team", tags: ["Happy where I am!"]},
+        "aboutMe": {text: "I am a Product Manager and I manage a team of Product Developers", careerDevelopment: "Having gained extensive experience in the overseas market, I am keen to develop my skills within the local Production team", skills: ["Leadership","Design","Quality Assurance"]},
         "imageRef": "https://images.pexels.com/photos/2897883/pexels-photo-2897883.jpeg?auto=compress&cs=tinysrgb&h=350",
 
     },
@@ -58,7 +58,7 @@ const users = [
         "role": "Developer",
         "department": "IT",
         "admin": false,
-        "aboutMe": {text: "I am a developer", careerDevelopment: "I want to be a senior developer", tags: ["Looking for a new job!","Happy where I am!","Might be willing to move!","Unsure how I feel about it!"]},
+        "aboutMe": {text: "I am a developer", careerDevelopment: "I want to be a senior developer", skills: ["Strategy","Analytical","Training"]},
         "imageRef": "https://images.pexels.com/photos/9071718/pexels-photo-9071718.jpeg?auto=compress&cs=tinysrgb&h=350",
     }
 
