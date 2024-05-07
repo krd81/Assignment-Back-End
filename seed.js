@@ -69,7 +69,7 @@ await UserModel.deleteMany()
 
 
 // Insert user documents into collection using previously defined array (users)
-const db_users = await UserModel.insertMany(users)
+let dbUsers = await UserModel.insertMany(users)
 
 
 // Array of listings for data seeding
@@ -89,9 +89,9 @@ const listings = [
         "roleDuration": "Contract",
         "datePosted": "2024-02-10",
         "dateClosing": "2024-02-29",
-        "applicants": [db_users[2]],
+        "applicants": [dbUsers[2]],
         "listingActive": true,
-        "creator" :  db_users[0]
+        "creator" :  dbUsers[0]
     },
     {
         "title": "Marketing Manager",
@@ -108,9 +108,9 @@ const listings = [
         "salary": "125000",
         "datePosted": "2024-04-10",
         "dateClosing": "2024-04-29",
-        "applicants": [db_users[3], db_users[2]],
+        "applicants": [dbUsers[3], dbUsers[2]],
         "listingActive": true,
-        "creator" : db_users[0]
+        "creator" : dbUsers[0]
     },
     {
         "title": "Data Analyst",
@@ -127,9 +127,9 @@ const listings = [
         "salary": "90000",
         "datePosted": "2024-01-05",
         "dateClosing": "2024-01-20",
-        "applicants": [db_users[3]],
+        "applicants": [dbUsers[3]],
         "listingActive": true,
-        "creator" : db_users[0]
+        "creator" : dbUsers[0]
     },
     {
         "title": "Administrator",
@@ -145,7 +145,7 @@ const listings = [
         "datePosted": "2024-02-24",
         "dateClosing": "2024-03-04",
         "listingActive": false,
-        "creator": db_users[0]
+        "creator": dbUsers[0]
     },
     {
         "title": "Social Media Coordinator",
@@ -163,7 +163,7 @@ const listings = [
         "datePosted": "2024-04-24",
         "dateClosing": "2024-05-15",
         "listingActive": true,
-        "creator": db_users[0]
+        "creator": dbUsers[0]
     },
     {
         "title": "National Trainer",
@@ -181,7 +181,7 @@ const listings = [
         "datePosted": "2024-04-24",
         "dateClosing": "2024-05-22",
         "listingActive": true,
-        "creator": db_users[0]
+        "creator": dbUsers[0]
     },
     {
         "title": "Admin Manager",
@@ -199,7 +199,7 @@ const listings = [
         "datePosted": "2024-04-26",
         "dateClosing": "2024-05-31",
         "listingActive": false,
-        "creator": db_users[0]
+        "creator": dbUsers[0]
     },
     {
         "title": "IT Helpdesk",
@@ -217,7 +217,7 @@ const listings = [
         "datePosted": "2024-04-28",
         "dateClosing": "2024-05-20",
         "listingActive": true,
-        "creator": db_users[0]
+        "creator": dbUsers[0]
     },
 ]
 // Delete all documents in collection related to ListingModel
@@ -227,10 +227,41 @@ await ListingModel.deleteMany()
 // Insert listing documents into collection using previously defined array (listings)
 await ListingModel.insertMany(listings)
 
+dbUsers = await UserModel.find({});
+const dbListings = await ListingModel.find({});
 
 // Log both listings and users to console
 console.log("Users and Listings seeded")
 
+// Add applications to user's data
+const applications = [
+    {
+        "user" : dbUsers[2],
+        "listing" : dbListings[0]
+    },
+    {
+        "user" : dbUsers[2],
+        "listing" : dbListings[1]
+    },
+    {
+        "user" : dbUsers[3],
+        "listing" : dbListings[1]
+    },
+    {
+        "user" : dbUsers[3],
+        "listing" : dbListings[2]
+    }
+]
+
+
+for (let application of applications) {
+    let userID = application.user._id.toString();
+    let listingID = application.listing._id.toString();
+
+    await UserModel.findByIdAndUpdate(userID, {applications: [listingID]})
+}
+
+console.log("Applications added to Users")
 
 // Manually close connection to database when finished seeding
 closeConnection()
