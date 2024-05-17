@@ -29,7 +29,7 @@ router.get('/:id', auth, async (req, res) => {
 try {
     // Query to find one user using request parameters
     const user = await UserModel.findById(req.params.id)
-    // If the user isn't found, return an 
+    // If the user isn't found, return an
     if (!user) {
         return res.status(404).send({error: 'User not found'})
     }
@@ -56,7 +56,7 @@ try {
     await newUser.save()
     // Send back new user and confirmation code
     res.status(201).send(newUser)
-// Handle errors within try/catch  
+// Handle errors within try/catch
 } catch (error) {
     res.status(400).send(error)
 }
@@ -68,7 +68,7 @@ router.put('/:id', auth, async (req, res) => {
     // Save updated fields based on request body
     const updates = Object.keys(req.body)
     // Specify which fields can be updated
-    const allowedUpdates = ['firstName', 'lastName', 'email', 'password', 'role', 'department', 'admin', 'aboutMe', 'applications']
+    const allowedUpdates = ['firstName', 'lastName', 'email', 'password', 'role', 'department', 'admin', 'aboutMe', 'imageRef', 'applications', 'listingsFavourites', 'eventsBooked', 'eventsSaved']
     // Check if all requested updates are valid
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
@@ -96,7 +96,7 @@ try {
     await user.save()
     // Send back updated user
     res.send(user)
-// Handle errors within try/catch  
+// Handle errors within try/catch
 } catch (error) {
     res.status(400).send(error)
 }
@@ -113,7 +113,7 @@ try {
     }
     // Send user for deletion
     res.status(204).send(user)
-// Handle errors within try/catch  
+// Handle errors within try/catch
 } catch (error) {
     res.status(500).send(error)
 }
