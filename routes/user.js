@@ -50,13 +50,13 @@ router.post('/:id/password', auth, async (req, res) => {
         const user = await UserModel.findById(req.params.id)
         if (user && await bcrypt.compare(password, user.password)) {
         // Send user to client
-            res.status(200)
+            res.status(200).send(user)
         } else {
-            res.status(205)
+            res.status(401).send("Authentication failed")
         }
     // Handle errors within try/catch
     } catch (error) {
-        res.status(401).send(error)
+        res.status(500).send(error)
     }
     })
 
