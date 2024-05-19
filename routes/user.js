@@ -42,6 +42,26 @@ try {
 })
 
 
+// Password update: compare user's saved password to their entered password (AUTH REQUIRED)
+router.post('/:id/password', auth, async (req, res) => {
+    const { password } = req.body;
+    try {
+        // Query to find one user using request parameters
+        const user = await UserModel.findById(req.params.id)
+        if (user && await bcrypt.compare(password, user.password)) {
+        // Send user to client
+            res.status(200)
+        } else {
+            res.status(205)
+        }
+    // Handle errors within try/catch
+    } catch (error) {
+        res.status(401).send(error)
+    }
+    })
+
+
+
 // Create a new user (AUTH REQUIRED)
 router.post('/', auth, adminAuth, async (req, res) => {
 try {
