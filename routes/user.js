@@ -11,7 +11,7 @@ const router = Router()
 router.get('/', auth, async (req, res) => {
 try {
     // Query to find all users
-    const users = await UserModel.find().populate('applications')
+    const users = await UserModel.find().populate('applications').populate('listingsFavourites')
     // If none are found, send an error
     if (!users) {
         return res.status(404).send({error: 'No users found'})
