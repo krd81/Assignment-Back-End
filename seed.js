@@ -1,6 +1,7 @@
 // File for seeding profile data, login data, and
 import bcrypt from 'bcrypt'
 import { closeConnection, UserModel, ListingModel } from "./db.js"
+import * as dateCalc from './dateCalc.js'
 
 // Array of users for data seeding
 const users = [
@@ -87,8 +88,8 @@ const listings = [
         "salary": "100000",
         "roleType": "Full-time",
         "roleDuration": "Contract",
-        "datePosted": "2024-02-10",
-        "dateClosing": "2024-02-29",
+        "datePosted": dateCalc.oneMonthBackFromNow,
+        "dateClosing": dateCalc.twoDaysBackFromNow,
         "applicants": [dbUsers[2]],
         "listingActive": true,
         "creator" :  dbUsers[0]
@@ -106,8 +107,8 @@ const listings = [
         "roleType": "Full-time",
         "roleDuration": "Permanent",
         "salary": "125000",
-        "datePosted": "2024-04-30",
-        "dateClosing": "2024-05-23",
+        "datePosted": dateCalc.oneMonthBackFromNow,
+        "dateClosing": dateCalc.twoDaysBackFromNow,
         "applicants": [dbUsers[3], dbUsers[2]],
         "listingActive": true,
         "creator" : dbUsers[0]
@@ -125,8 +126,8 @@ const listings = [
         "roleType": "Full-time",
         "roleDuration": "Parental Leave",
         "salary": "90000",
-        "datePosted": "2024-05-05",
-        "dateClosing": "2024-05-27",
+        "datePosted": dateCalc.twoWeeksBackFromNow,
+        "dateClosing": dateCalc.oneWeekAheadFromNow,
         "applicants": [dbUsers[3]],
         "listingActive": true,
         "creator" : dbUsers[0]
@@ -142,8 +143,8 @@ const listings = [
         "salary": "70000",
         "roleType": "Full-time",
         "roleDuration": "Permanent",
-        "datePosted": "2024-02-24",
-        "dateClosing": "2024-03-04",
+        "datePosted": dateCalc.oneMonthBackFromNow,
+        "dateClosing": dateCalc.twoWeeksBackFromNow,
         "listingActive": false,
         "creator": dbUsers[0]
     },
@@ -160,8 +161,8 @@ const listings = [
         "salary": "65000",
         "roleType": "Part-time",
         "roleDuration": "Contract",
-        "datePosted": "2024-05-01",
-        "dateClosing": "2024-06-15",
+        "datePosted": dateCalc.twoWeeksBackFromNow,
+        "dateClosing": dateCalc.twoWeeksAheadFromNow,
         "applicants": [dbUsers[4]],
         "listingActive": true,
         "creator": dbUsers[0]
@@ -179,8 +180,8 @@ const listings = [
         "salary": "105000",
         "roleType": "Part-time",
         "roleDuration": "Permanent",
-        "datePosted": "2024-04-24",
-        "dateClosing": "2024-05-22",
+        "datePosted": dateCalc.oneMonthBackFromNow,
+        "dateClosing": dateCalc.yesterday,
         "listingActive": true,
         "creator": dbUsers[0]
     },
@@ -197,8 +198,8 @@ const listings = [
         "salary": "95000",
         "roleType": "Full-time",
         "roleDuration": "Permanent",
-        "datePosted": "2024-05-20",
-        "dateClosing": "2024-06-20",
+        "datePosted": dateCalc.twoDaysBackFromNow,
+        "dateClosing": dateCalc.oneMonthAheadFromNow,
         "listingActive": true,
         "creator": dbUsers[0]
     },
@@ -215,8 +216,8 @@ const listings = [
         "salary": "75000",
         "roleType": "Full-time",
         "roleDuration": "Permanent",
-        "datePosted": "2024-05-22",
-        "dateClosing": "2024-06-19",
+        "datePosted": dateCalc.twoWeeksBackFromNow,
+        "dateClosing": dateCalc.oneMonthAheadFromNow,
         "listingActive": true,
         "creator": dbUsers[0]
     },
