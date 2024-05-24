@@ -106,8 +106,8 @@ const listings = [
         "roleType": "Full-time",
         "roleDuration": "Permanent",
         "salary": "125000",
-        "datePosted": "2024-04-10",
-        "dateClosing": "2024-04-29",
+        "datePosted": "2024-04-30",
+        "dateClosing": "2024-05-23",
         "applicants": [dbUsers[3], dbUsers[2]],
         "listingActive": true,
         "creator" : dbUsers[0]
@@ -125,8 +125,8 @@ const listings = [
         "roleType": "Full-time",
         "roleDuration": "Parental Leave",
         "salary": "90000",
-        "datePosted": "2024-01-05",
-        "dateClosing": "2024-01-20",
+        "datePosted": "2024-05-05",
+        "dateClosing": "2024-05-27",
         "applicants": [dbUsers[3]],
         "listingActive": true,
         "creator" : dbUsers[0]
@@ -160,8 +160,9 @@ const listings = [
         "salary": "65000",
         "roleType": "Part-time",
         "roleDuration": "Contract",
-        "datePosted": "2024-04-24",
-        "dateClosing": "2024-05-15",
+        "datePosted": "2024-05-01",
+        "dateClosing": "2024-06-15",
+        "applicants": [dbUsers[4]],
         "listingActive": true,
         "creator": dbUsers[0]
     },
@@ -196,9 +197,9 @@ const listings = [
         "salary": "95000",
         "roleType": "Full-time",
         "roleDuration": "Permanent",
-        "datePosted": "2024-04-26",
-        "dateClosing": "2024-05-31",
-        "listingActive": false,
+        "datePosted": "2024-05-20",
+        "dateClosing": "2024-06-20",
+        "listingActive": true,
         "creator": dbUsers[0]
     },
     {
@@ -214,8 +215,8 @@ const listings = [
         "salary": "75000",
         "roleType": "Full-time",
         "roleDuration": "Permanent",
-        "datePosted": "2024-04-28",
-        "dateClosing": "2024-05-20",
+        "datePosted": "2024-05-22",
+        "dateClosing": "2024-06-19",
         "listingActive": true,
         "creator": dbUsers[0]
     },
@@ -250,6 +251,10 @@ const applications = [
     {
         "user" : dbUsers[3],
         "listing" : dbListings[2]
+    },
+    {
+        "user" : dbUsers[4],
+        "listing" : dbListings[4]
     }
 ]
 
