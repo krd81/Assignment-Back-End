@@ -13,7 +13,7 @@ const router = Router()
 router.get('/', auth, async (req, res) => {
     try {
       // Query DB for listings, populating applicants and creator within
-      let listings = await ListingModel.find().populate('applicants').populate('creator');
+      let listings = await ListingModel.find().populate('applicants').populate('creator').sort({ datePosted: -1 });
 
       // If there are no listings, return an error
       if (!listings.length) {
@@ -44,7 +44,7 @@ router.get('/', auth, async (req, res) => {
 router.get('/user/:userId', auth, async (req, res) => {
   try {
     // Query DB for listings, populating applicants and creator within
-    let listings = await ListingModel.find({ creator: { _id: req.params.userId } }).populate('applicants').populate('creator');
+    let listings = await ListingModel.find({ creator: { _id: req.params.userId } }).populate('applicants').populate('creator').sort({ dateClosing: -1 });
 
     // If there are no listings, return an error
     if (!listings.length) {
