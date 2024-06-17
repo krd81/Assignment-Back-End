@@ -6,7 +6,7 @@ dotenv.config()
 
 try {
     // Attempt connection to MongoDB using .env connection string
-    const m = await mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    const m = await mongoose.connect(process.env.DB_URI)
     // Log success and failure using a ternary operator
     console.log(m.connection.readyState === 1 ? 'MongoDB connected!' : 'MongoDB failed to connect')
 
